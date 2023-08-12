@@ -1,2 +1,5 @@
 # Ignore virtual environment
 myenv/
+.ipynb_checkpoints
+~$Presentation.pptx
+.DS_Store
