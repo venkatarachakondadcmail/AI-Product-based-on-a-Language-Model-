@@ -13,8 +13,8 @@ def load_image(image_path_or_url, timeout=None):
         image = Image.open(io.BytesIO(response.content))
     else:
         image = Image.open(image_path_or_url)
-    
     return image
+    
 class VisualQuestionAnsweringPipeline(Pipeline):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -51,6 +51,7 @@ class VisualQuestionAnsweringPipeline(Pipeline):
         scores = scores.tolist()
         ids = ids.tolist()
         return [{"score": score, "answer": self.model.config.id2label[_id]} for score, _id in zip(scores, ids)]
+
 
 # You can then use your custom pipeline
 oracle = VisualQuestionAnsweringPipeline(model="dandelin/vilt-b32-finetuned-vqa")
